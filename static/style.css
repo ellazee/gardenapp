@@ -8,3 +8,19 @@ div {
 	font-family: "Antic";
 	font-size: 20px;
 }
+h1 {
+	text-align: center;
+	color: #66bb6a;
+}
+h3 {
+	color: #66bb6a;
+	text-align: center;
+}
+a {
+	text-align: center;
+	color: #66bb6a;
+}
+.button {
+	font-size: 22px;
+}
+

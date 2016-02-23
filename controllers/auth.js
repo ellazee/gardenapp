@@ -1,6 +1,8 @@
 var express = require('express');
 var db = require('../models');
 var router = express.Router();
+var ejsLayouts = require("express-ejs-layouts");
+
 
 router.get('/signup', function(req, res) {
   res.render('auth/signup', {alerts: req.flash()});
@@ -12,7 +14,8 @@ router.post('/signup', function(req, res) {
       email: req.body.email
     },
     defaults: {
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       password: req.body.password
     }
   }).spread(function(user, created) {
@@ -56,5 +59,9 @@ router.get('/logout', function(req, res) {
   req.flash('success', 'You have logged out');
   res.redirect('/');
 });
+
+
+router.use(ejsLayouts);
+
 
 module.exports = router;

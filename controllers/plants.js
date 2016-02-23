@@ -25,7 +25,7 @@ router.get("/", function(req, res) {
 router.get("/newplant", function(req, res) {
 	db.plant.findOrCreate({
 		where: {
-			name: "Green Bean (pole)" },
+			name: "Chard" },
 		defaults: {	
 			category: "",
 			image:"",

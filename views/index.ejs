@@ -1,8 +1,12 @@
 <!-- <header><img src="images/lettucerows.png" width="100%"></header> -->
-<h1>Home Page</h1>
 
-<a href="/plants">Vegetable List</a>
-
+<h1><a href="/plants" class="green-text text-darken-4">See All Vegetables</a></h1>
 
 
+<% if (currentUser) { %>
+  <a href="/auth/logout" class="button green lighten-1 waves-effect waves-light btn-large">Logout</a>
+<% } else { %>
+  <a href="/auth/signup" size="100" class="button light-green lighten-1 waves-effect waves-light btn-large">New User? Signup Here!</a>
+  <a href="/auth/login" class="button green lighten-1 waves-effect waves-light btn-large">Login to Your Account</a>
+<% } %>
 
