@@ -15,6 +15,14 @@ app.set("view engine", "ejs");
 app.use("/plants", require("./controllers/plants"));
 app.use(ejsLayouts);
 
+//auth index.js pasted from example
+app.use(session({
+  secret: 'dsalkfjasdflkjgdfblknbadiadsnkl',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
+
 app.get('/', function(req, res) {
 	db.plant.findAll().then(function(plants){
 		res.render('index.ejs', {plantsList:plants});
@@ -29,6 +37,39 @@ app.get("/", function(req, res) {
 		res.render("layout.ejs", {plantsList:plants})
 	});
 });
+
+app.use(function(req, res, next) {
+  if (req.session.userId) {
+    db.user.findById(req.session.userId).then(function(user) {
+      req.currentUser = user;
+      console.log(currentUser);
+      res.locals.currentUser = user;
+      next();
+    });
+  } else {
+    req.currentUser = false;
+    res.locals.currentUser = false;
+    next();
+  }
+});
+
+app.get('/', function(req, res) {
+  res.render('index', {alerts: req.flash()});
+});
+
+app.get('/secret', function(req, res) {
+  if (req.currentUser) {
+    res.render('secret');
+  } else {
+    req.flash('danger', 'You must be logged in to view this page');
+    res.redirect('/');
+  }
+});
+
+app.use('/auth', require('./controllers/auth'));
+
+
+
 
 
 

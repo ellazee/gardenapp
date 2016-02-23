@@ -25,13 +25,13 @@ router.get("/", function(req, res) {
 router.get("/newplant", function(req, res) {
 	db.plant.findOrCreate({
 		where: {
-			name: "Sweet Corn" },
+			name: "Green Bean (pole)" },
 		defaults: {	
-			category: "Corn",
+			category: "",
 			image:"",
-			info: "70-90 days to harvest. Sow in early June, planting seeds an inch deep in rows 8-12 inches apart.",
-			S1: 6,
-			H1: 9,
+			info: "60 days to harvest. Sow in May, planting seeds an inch deep in rows 6 inches apart.",
+			S1: 5,
+			H1: 7,
 			S2: null,
 			H2: null
 		}
