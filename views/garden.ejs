@@ -4,10 +4,11 @@
 	<div>
 	<% user.plants.forEach(function(plant) {%>
 		<p>
-			<a href="plants/<%= plant.id %>"><%= plant.name %></a>  
-
-	
-
+			<div class="row showplant">
+				<div><a href="plants/<%= plant.id %>"><h5><%= plant.name %></h5></a></div>  
+				<div class="info col s1 offset-s3"><%- plant.image %></div>
+				<div class="info col s4 offset-s1"><%= plant.info %></div>
+			</div>
 		</p>
 		<% }); %>
 	</div>	
