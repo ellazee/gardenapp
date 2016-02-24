@@ -1,9 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var favorite = sequelize.define('favorite', {
-    name: DataTypes.STRING,
-    userId: DataTypes.INTEGER,
-    plantId: DataTypes.INTEGER
+  var plantsTags = sequelize.define('plantsTags', {
+    plantId: DataTypes.INTEGER,
+    tagId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
@@ -11,5 +10,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return favorite;
+  return plantsTags;
 };

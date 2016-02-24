@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
 app.use(function(req, res, next){
 	db.plant.findAll().then(function(plants){
 		res.locals.plantsList = plants;
-		console.log(res.locals)
+		//console.log(res.locals)
 		next();
 	});
 });
@@ -49,10 +49,18 @@ app.use(function(req, res, next){
 app.use(function(req, res, next){
   db.month.findAll().then(function(months){
     res.locals.months = months;
-    console.log(res.locals)
+  //  console.log(res.locals)
     next();
   });
 });
+
+//this route didn't work and made my page hang
+// app.use(function(req,res, next) {
+//   db.usersPlants.findAll().then(function(userplants) {
+//     res.locals.userplants = userplants;
+//     console.log("userplants is: "+userplants);
+//   });
+// });
 
 app.get('/', function(req, res) {
   res.render('index', {alerts: req.flash()});
@@ -64,11 +72,50 @@ app.get('/', function(req, res) {
   //console.log("foooooooo");
 });
 
+// router.get("/:id", function(req,res) {
+//   var id = req.params.id;
+//   db.month.findById(id).then(function(month){
+    
+//       res.render("showmonth.ejs", {month:month});
+//   });
+// });
 
+// router.get("/:id", function(req,res) {
+//   var id = req.params.id;
+//   db.plant.findAll().then(function(plants){
+//     db.plant.findById(id).then(function(plant) {
+//       res.render("showplant.ejs", {plant:plant, plantsList: plants});
+
+//     });
+//   });
+// });
+
+// app.get("/garden", function(req, res) {
+//   db.user.findById(req.session.userId).then(function(user){
+//     db.plant.findAll().then(function(plant) {
+//        res.render("garden.ejs", {user:user, plant:plant});
+//     });   
+//   });
+//   var userId = req.session.userId;
+
+//   db.user.findById(req.session.userId).then(function(myplants) {
+//     db.usersPlants.findAll().then(function(list) {
+//         where: {
+//       userId:req.session.userId}
+      
+//     console.log("userId is: "+userId);
+//     console.log("myplants is: "+myplants);
+//     });
+    
+//   });
+  
+//});
+
+app.use("/tags", require("./controllers/tags"));
 app.use("/months", require("./controllers/months"));
 app.use("/plants", require("./controllers/plants"));
 app.use('/auth', require('./controllers/auth'));
-app.use("/favorites", require("./controllers/favorites"));
 
 
-app.listen(3000);
+
+app.listen((process.env.PORT || 3000);

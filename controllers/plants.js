@@ -41,6 +41,31 @@ router.get("/newplant", function(req, res) {
 	});
 });
 
+//paste new code here
+router.get("/garden", function(req, res) {
+	db.user.findOne({
+		where: {
+			id:req.session.userId
+		},
+		include: [db.plant]
+	}).then(function(user) {
+		res.render("garden.ejs", {user:user});
+	});
+});
+
+
+
+router.post("/:id", function(req, res) {
+	var id = req.params.id;
+	db.user.findById(req.session.userId).then(function(post) {
+		db.plant.findById(id).then(function(myplant) {
+			post.addPlant(myplant).then(function() {
+				res.redirect("/plants/garden");
+			});
+		});
+	});		
+});
+
 
 router.get("/:id", function(req,res) {
 	var id = req.params.id;

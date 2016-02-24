@@ -23,7 +23,7 @@ router.post("/:id", function (req, res) {
 				name:name
 			}
 		}).spread(function (tag, created) {
-			db.plantTag.create({
+			db.plantsTags.create({
 				plantId:id,
 				tagId:tag.id
 			}).then(function(){

@@ -8,14 +8,16 @@
 </div>
 
 
+
+
 <div class="row showplant">	
-	<form action="/favorites" method="POST">
-		<a type="submit" class="green lighten-1 waves-effect waves-light btn">Add to My Garden</a>	
-		<input type="hidden" name="favPlant" value="<%= plant.id %>"/>
+	<form action="/plants/<%=plant.id%>" method="POST">
+		<button type="submit" class="buttons green lighten-1 waves-effect waves-light btn-large">Add to My Garden</button>	
+		<input type="hidden" name="plantId" value="<%= plant.id %>"/>
 	</form>
 	
-	<form method="GET" action="/favorites">
-		<a type="submit"class="green lighten-1 waves-effect waves-light btn">See Your Garden</a>
+	<form method="GET" action="/garden">
+		<button type="submit"class="green lighten-1 waves-effect waves-light btn-large">See Your Garden</button>
 	</form>
 </div>
 

@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.plant.belongsToMany(models.tag, {through: 'plantTag'});
+        models.plant.belongsToMany(models.tag, {through: 'plantsTags'});
+        models.plant.belongsToMany(models.user, {through: 'usersPlants'});
       }
     }
   });
