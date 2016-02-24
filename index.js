@@ -46,6 +46,14 @@ app.use(function(req, res, next){
 	});
 });
 
+app.use(function(req, res, next){
+  db.month.findAll().then(function(months){
+    res.locals.months = months;
+    console.log(res.locals)
+    next();
+  });
+});
+
 app.get('/', function(req, res) {
   res.render('index', {alerts: req.flash()});
 });
@@ -57,9 +65,10 @@ app.get('/', function(req, res) {
 });
 
 
-
+app.use("/months", require("./controllers/months"));
 app.use("/plants", require("./controllers/plants"));
 app.use('/auth', require('./controllers/auth'));
+app.use("/favorites", require("./controllers/favorites"));
 
 
 app.listen(3000);

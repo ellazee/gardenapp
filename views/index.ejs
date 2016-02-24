@@ -6,7 +6,11 @@
 <% if (currentUser) { %>
   <a href="/auth/logout" class="button green lighten-1 waves-effect waves-light btn-large">Logout</a>
 <% } else { %>
-  <a href="/auth/signup" size="100" class="button light-green lighten-1 waves-effect waves-light btn-large">New User? Signup Here!</a>
-  <a href="/auth/login" class="button green lighten-1 waves-effect waves-light btn-large">Login to Your Account</a>
+	<div class="row showplant">  
+	  <a href="/auth/signup" size="100" class="button light-green lighten-1 waves-effect waves-light btn-large">New User? Signup Here!</a>
+	  <a href="/auth/login" class="button green lighten-1 waves-effect waves-light btn-large">Login to Your Account</a>
+	</div>	  
 <% } %>
+
+<div><img src="/images/veggies.jpg" width="100%"></div>
 

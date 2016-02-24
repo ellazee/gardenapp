@@ -1,0 +1,14 @@
+<h1>My Garden</h1>
+
+
+<div class="row">
+	<% favplant.forEach(function(plant) {%>
+		<div>
+			<p>
+				<a href="plants/<%= plant.id %>"><%= plant.name %></a>  
+				<a class="tags" href="/tags/<%= plant.id %>">Tags</a>
+
+			</p>
+		</div>	
+	<% }); %>	
+</div>

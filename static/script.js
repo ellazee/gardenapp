@@ -1,3 +1,6 @@
+
+$(document).ready().$(".button-collapse").sideNav();
+
 function heightsEqualizer(selector) {
     var elements = document.querySelectorAll(selector),
         max_height = 0,

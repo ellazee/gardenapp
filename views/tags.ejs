@@ -2,3 +2,19 @@
     Tag
     <i class="material-icons">close</i>
   </div>
+
+<h1>Tags</h1>
+
+<form method="POST" action="/tags/<%=plant.id%>">
+	<input name="name" placeholder="New Tag Here" type="text"></input>
+	<button type="submit">Submit</button>
+</form>
+
+<p><%= plant.name %></p>
+
+<% tag.forEach(function(tag) { %>
+	
+	<a class="tags showtags" href="/tags/showtags/<%= tag.id %>"><%= tag.name %></a>
+	
+<% })%>
+

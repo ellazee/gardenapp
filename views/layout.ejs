@@ -4,6 +4,7 @@
 	<title>Garden</title>
 	<link href='https://fonts.googleapis.com/css?family=Crushed' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Antic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	  <!-- Compiled and minified CSS for Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
@@ -15,30 +16,48 @@
 
 </head>
 <body>
+<% if (typeof alerts !== 'undefined') { %>
+   <% for (key in alerts) { %>
+     <% alerts[key].forEach(function(thisMsg) { %>
+       <div class="alert alert-<%= key %>"><%= thisMsg %></div>
+     <% }); %>
+   <% } %>
+<% } %>
 <!-- Dropdown Structure -->
+
 <ul id="dropdown1" class="dropdown-content">
   <% plantsList.forEach(function(plant) {%>
     <li><a href="/plants/<%= plant.id %>"><%= plant.name %></a></li>
     <li class="divider"></li>
   <% }); %>
+</ul>
 
+<ul id="dropdown2" class="dropdown-content">
+  <% months.forEach(function(month) {%>
+    <li><a href="/months/<%= month.id %>"><%= month.name %></a></li>
+    <li class="divider"></li>
+  <% }); %>
 </ul>
 
 <div><img src="/images/lettucerows.png" width="100%"></div>
+
 <nav>
 
   <div class="nav-wrapper">
 
+
     <a href="/" class="brand-logo">LETTUCE TURNIP the BEET</a>
+   
     <ul class="right hide-on-med-and-down">
     <li><a href="/auth/login">Log in</a></li>
     <li><a href="/auth/signup">Sign Up</a></li>
-      <li><a href="/calendar">Planting Calendar</a></li>
+      <li><a href="#!" class="dropdown-button" data-activates="dropdown2">Planting Calendar</a></li>
 
       <li><a href="/gallery">Gallery</a></li>
       <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">Vegetables</i></a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Vegetables</a></li>
     </ul>
+
   </div>
 
 </nav>
