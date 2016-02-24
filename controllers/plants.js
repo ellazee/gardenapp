@@ -4,9 +4,9 @@ var db = require('../models');
 var bodyParser = require("body-parser");
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
-var ejsLayouts = require("express-ejs-layouts");
+//var ejsLayouts = require("express-ejs-layouts");
 router.use(express.static(__dirname + '/static'));
-router.use(ejsLayouts);
+
 
 // router.get("/", function (req,res) {
 // 	res.send("It's working!");
@@ -17,9 +17,6 @@ router.get("/", function(req, res) {
 		res.render("plants.ejs", {plantsList:plants});
 	});
 });
-
-
-
 
 
 router.get("/newplant", function(req, res) {
@@ -44,6 +41,7 @@ router.get("/newplant", function(req, res) {
 	});
 });
 
+
 router.get("/:id", function(req,res) {
 	var id = req.params.id;
 	db.plant.findAll().then(function(plants){
@@ -54,15 +52,16 @@ router.get("/:id", function(req,res) {
 	});
 });
 
-router.get("/:id", function(req, res) {
-	var id = req.params.id;
-	db.plant.findAll().then(function(plants) {
-		res.render("layout.ejs", {plantsList:plants});
 
-	});
-});
+//don't need this route now that we have the middleware
+// router.get("/:id", function(req, res) {
+// 	var id = req.params.id;
+// 	db.plant.findAll().then(function(plants) {
+// 		res.render("layout.ejs", {plantsList:plants});
 
+// 	});
+// });
 
-
+//router.use(ejsLayouts);
 
 module.exports = router;

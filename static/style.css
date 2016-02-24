@@ -20,7 +20,17 @@ a {
 	text-align: center;
 	color: #66bb6a;
 }
-.button {
+.info {
 	font-size: 22px;
+	text-align: left;
 }
 
+.showplant {
+	text-align: center;
+}
+.welcome {
+	margin-left: 25px;
+	font-family: "Crushed";
+	font-size: 26px;
+	color: #ff1744;
+}

@@ -1,7 +1,9 @@
 var express = require('express');
 var db = require('../models');
 var router = express.Router();
-var ejsLayouts = require("express-ejs-layouts");
+//var ejsLayouts = require("express-ejs-layouts");
+
+
 
 
 router.get('/signup', function(req, res) {
@@ -61,7 +63,7 @@ router.get('/logout', function(req, res) {
 });
 
 
-router.use(ejsLayouts);
+//router.use(ejsLayouts);
 
 
 module.exports = router;

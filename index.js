@@ -8,16 +8,14 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var ejsLayouts = require("express-ejs-layouts");
 var plantsCtrl = require("./controllers/plants");
+app.use(ejsLayouts);
 
-app.use("/plants", require("./controllers/plants"));
 app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.set("view engine", "ejs");
-app.use(ejsLayouts);
+
 
 //auth index.js pasted from example
-
-
 
 app.use(session({
   secret: 'qpwoeiruutsjdhgh',
@@ -40,35 +38,27 @@ app.use(function(req, res, next) {
   }
 });
 
+app.use(function(req, res, next){
+	db.plant.findAll().then(function(plants){
+		res.locals.plantsList = plants;
+		console.log(res.locals)
+		next();
+	});
+});
+
 app.get('/', function(req, res) {
   res.render('index', {alerts: req.flash()});
 });
 
-// app.get('/secret', function(req, res) {
-//   if (req.currentUser) {
-//     res.render('secret');
-//   } else {
-//     req.flash('danger', 'You must be logged in to view this page');
-//     res.redirect('/');
-//   }
-// });
 
 app.get('/', function(req, res) {
-	db.plant.findAll().then(function(plants){
-		res.render('index.ejs', {plantsList:plants});
-
-	});  
+		res.render('index.ejs');
   //console.log("foooooooo");
 });
 
-app.get("/", function(req, res) {
-	var id = req.params.id;
-	db.plant.findAll().then(function(plants) {
-		res.render("layout.ejs", {plantsList:plants})
-	});
-});
 
 
+app.use("/plants", require("./controllers/plants"));
 app.use('/auth', require('./controllers/auth'));
 
 

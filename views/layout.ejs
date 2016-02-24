@@ -17,7 +17,10 @@
 <body>
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
-
+  <% plantsList.forEach(function(plant) {%>
+    <li><a href="/plants/<%= plant.id %>"><%= plant.name %></a></li>
+    <li class="divider"></li>
+  <% }); %>
 
 </ul>
 
@@ -39,7 +42,10 @@
   </div>
 
 </nav>
- <div><%= currentUser.firstName %></div>
+<% if (currentUser)  { %>
+  <div class="welcome">Welcome, <%= currentUser.firstName %>!</div>
+  <a href="/auth/logout" class="button green lighten-1 waves-effect waves-light btn-large">Logout</a>
+<% } %>
 <%- body %>
 
 
