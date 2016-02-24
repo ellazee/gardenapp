@@ -62,8 +62,10 @@
 
 </nav>
 <% if (currentUser)  { %>
-  <div class="welcome">Welcome, <%= currentUser.firstName %>!</div>
-  <a href="/auth/logout" class="button green lighten-1 waves-effect waves-light btn-large">Logout</a>
+  <div class="row">
+    <div class="welcome col s2">Welcome, <%= currentUser.firstName %>!</div>
+    <div class="logout col s1 offset-s8"><a href="/auth/logout" class="green lighten-1 waves-effect waves-light btn">Logout</a></div>
+  </div>
 <% } %>
 <%- body %>
 
