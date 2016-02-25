@@ -1,20 +1,22 @@
-  <div class="chip">
-    Tag
-    <i class="material-icons">close</i>
-  </div>
+  
 
 <h1>Tags</h1>
+<div class="container">
+	<form method="POST" action="/tags/<%=plant.id%>">
+		<input name="name" placeholder="New Tag Here" type="text"></input>
+		<button type="submit">Submit</button>
+	</form>
 
-<form method="POST" action="/tags/<%=plant.id%>">
-	<input name="name" placeholder="New Tag Here" type="text"></input>
-	<button type="submit">Submit</button>
-</form>
+	<p><%= plant.name %></p>
 
-<p><%= plant.name %></p>
-
-<% tag.forEach(function(tag) { %>
-	
-	<a class="tags showtags" href="/tags/showtags/<%= tag.id %>"><%= tag.name %></a>
-	
-<% })%>
+	<% tag.forEach(function(tag) { %>
+		
+		
+		<div class="chip">
+	    <a class="tags showtags" href="/tags/showtags/<%= tag.id %>"><%= tag.name %></a>
+	    <i class="material-icons">close</i>
+	  </div>
+		
+	<% })%>
+</div>
 

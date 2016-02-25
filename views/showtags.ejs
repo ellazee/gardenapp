@@ -1,0 +1,11 @@
+<%= tag.name %>
+<div class="centerit">
+
+<% plant.forEach(function(plant){ %>
+	
+	<p>
+		<img class="circle" src="<%= plant.image %>" width="75px">
+		<%= plant.name %>
+	</p>	
+<% }) %>
+</div>

@@ -17,12 +17,42 @@ router.get("/newmonth", function(req, res) {
 	});
 });
 
+// router.get("/", function(req, res) {
+// 	db.month.findAll({
+// 		include: [db.plant]
+// 	})
+// 	.then(function(month) {
+// 		res.render("calendar.ejs", {month:month});
+// 	});
+// });
+
 router.get("/:id", function(req,res) {
 	var id = req.params.id;
-	db.month.findById(id).then(function(month){
-		
-			res.render("showmonth.ejs", {month:month});
+	var foo;
+	var bar;
+
+	db.plant.findAll({
+
+		where: {
+			S1:id
+		}
+		// include: [db.month]
+	}).then(function(sow) {		
+		foo = sow;
 	});
+
+	db.plant.findAll({
+		where: {
+			H1:id
+		}
+		// include: [db.month]
+	}).then(function(sow) {
+		bar = sow;
+		res.render("showmonth", {foo: foo, bar:bar});
+		// res.send(bar);
+	});
+		// res.render("showmonth.ejs", {month:month});
+
 });
 
 module.exports = router;

@@ -38,7 +38,7 @@ router.get("/showtags/:id", function (req, res) {
 	db.tag.findById(id).then(function(tag) {
 		tag.getPlants().then(function(plant) {
 			res.render('showtags', {
-				name:tag,
+				tag:tag,
 				plant:plant
 			});
 		});

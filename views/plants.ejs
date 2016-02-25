@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container show-on-medium-and-up hide-on-small-only">
 	<h1 class="green-text text-darken-2">Vegetables</h1>
 	<div class="row" class="blocks">
 		<% plantsList.forEach(function(plant) {%>				
@@ -8,7 +8,9 @@
 				<div class="divider"></div>
 					<a href="plants/<%- plant.id%> "><%= plant.name %></a>
 						<div class="truncate" class="float-text"><%= plant.info %></div>
-						<div><img class="showplants responsive-img" src="<%- plant.image %>"></div>
+						<div><img class="showplants responsive-img" src="<%- plant.image %>">
+						</div>
+						<a class="tags" href="/tags/<%= plant.id %>">Tags</a>	
 						
 			</div>	
 		<% }) %>
@@ -16,3 +18,18 @@
 </div>	
 
 
+  <div class="card small show-on-small hide-on-med-and-up">
+  <% plantsList.forEach(function(plant) {%>
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="<%- plant.image %>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= plant.name %><i class="material-icons right">more_vert</i></span>
+      <p><a href="plants/<%- plant.id %>">Plant page</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p><%= plant.info %></p>
+    </div>
+    <% }) %>
+  </div>

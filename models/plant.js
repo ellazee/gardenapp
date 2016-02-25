@@ -15,6 +15,8 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         models.plant.belongsToMany(models.tag, {through: 'plantsTags'});
         models.plant.belongsToMany(models.user, {through: 'usersPlants'});
+//        models.plant.belongsTo(models.month, {as:'firstsow', foreignKey: 'S1'});
+//        models.plant.belongsTo(models.month, {as:'firstharvest', foreignKey: 'H1'});
       }
     }
   });

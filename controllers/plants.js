@@ -41,20 +41,6 @@ router.get("/newplant", function(req, res) {
 	});
 });
 
-//paste new code here
-router.get("/garden", function(req, res) {
-	db.user.findOne({
-		where: {
-			id:req.session.userId
-		},
-		include: [db.plant]
-	}).then(function(user) {
-		res.render("garden.ejs", {user:user});
-	});
-});
-
-
-
 router.post("/:id", function(req, res) {
 	var id = req.params.id;
 	db.user.findById(req.session.userId).then(function(post) {
@@ -78,15 +64,5 @@ router.get("/:id", function(req,res) {
 });
 
 
-//don't need this route now that we have the middleware
-// router.get("/:id", function(req, res) {
-// 	var id = req.params.id;
-// 	db.plant.findAll().then(function(plants) {
-// 		res.render("layout.ejs", {plantsList:plants});
-
-// 	});
-// });
-
-//router.use(ejsLayouts);
 
 module.exports = router;
