@@ -12,11 +12,16 @@ var images = [];
 
 
 router.get('/', function(req, res) {
+	if(req.session.userId) {
 	db.image.findAll().then(function(images){
 		 res.render('gallery.ejs', {images:images,
   									cloudinary:cloudinary});
 		});
+	} else {
+		res.render('loginerror.ejs');
+	}
 });
+
 
 router.post('/', upload.single('userImage'), function(req, res) {
 	 // res.send(req.file);

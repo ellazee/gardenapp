@@ -42,11 +42,13 @@ router.get("/newplant", function(req, res) {
 });
 
 router.get("/garden", function(req, res) {
-  db.user.findById(req.session.userId, {
-  	include:[db.plant]
-  	}).then(function(user) {
-       res.render("garden.ejs", {user:user});       
-  	});
+	if(req.session.userId) {
+	  db.user.findById(req.session.userId, {
+	  	include:[db.plant]
+	  	}).then(function(user) {
+	       res.render("garden.ejs", {user:user});       
+	  	});
+	} else  {res.render('loginerror.ejs')}
 }); 
 
 router.post("/:id", function(req, res) {

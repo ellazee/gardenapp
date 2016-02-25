@@ -10,6 +10,6 @@
 
 	<h1>Image Gallery</h1>
 	<% images.forEach(function(image) { %>
-		<%- cloudinary.image(image.image, {border: "10px_solid_#ffcdd2", effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb'}) %>
+		<%- cloudinary.image(image.image, {effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb', }) %>
 	<% }); %>
 </div>
