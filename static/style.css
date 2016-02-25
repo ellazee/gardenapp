@@ -25,8 +25,8 @@ a {
 	text-align: left;
 }
 
-.showplant {
-	text-align: center;
+.showplant img {
+	width= 200px;
 }
 .welcome {
 	margin-left: 25px;
@@ -37,4 +37,7 @@ a {
 
 .buttons {
 	margin: 10px;
+}
+.centerit {
+	text-align: center;
 }

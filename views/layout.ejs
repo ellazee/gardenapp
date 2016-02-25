@@ -42,25 +42,29 @@
 <div><img src="/images/lettucerows.png" width="100%"></div>
 
 <nav>
-
   <div class="nav-wrapper">
-
-
     <a href="/" class="brand-logo">LETTUCE TURNIP the BEET</a>
-   
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
     <li><a href="/auth/login">Log in</a></li>
     <li><a href="/auth/signup">Sign Up</a></li>
       <li><a href="#!" class="dropdown-button" data-activates="dropdown2">Planting Calendar</a></li>
-
       <li><a href="/gallery">Gallery</a></li>
       <!-- Dropdown Trigger -->
       <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Vegetables</a></li>
     </ul>
 
-  </div>
+    <ul class="side-nav" id="mobile-demo">
+      <li><a href="/auth/login">Log in</a></li>
+      <li><a href="/auth/signup">Sign Up</a></li>
+      <li><a href="/months">Calendar</a></li>
+      <li><a href="/plants">Vegetables</a></li>
 
+    </ul>
+
+  </div>
 </nav>
+
 <% if (currentUser)  { %>
   <div class="row">
     <div class="welcome col s2">Welcome, <%= currentUser.firstName %>!</div>
@@ -73,5 +77,6 @@
 
   <!-- Compiled and minified JavaScript for Materialize-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script src="/js/script.js" type="text/javascript"></script>
 </body>
 </html>

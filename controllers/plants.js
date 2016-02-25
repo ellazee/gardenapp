@@ -60,7 +60,7 @@ router.post("/:id", function(req, res) {
 	db.user.findById(req.session.userId).then(function(post) {
 		db.plant.findById(id).then(function(myplant) {
 			post.addPlant(myplant).then(function() {
-				res.redirect("/plants/garden");
+				res.redirect("/plants/:id");
 			});
 		});
 	});		

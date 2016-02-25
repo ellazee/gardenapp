@@ -116,6 +116,9 @@ app.use("/months", require("./controllers/months"));
 app.use("/plants", require("./controllers/plants"));
 app.use('/auth', require('./controllers/auth'));
 
+app.get('/*', function(req, res) {
+  res.render('error.ejs');
+});
 
 
 app.listen(process.env.PORT || 3000);

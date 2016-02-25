@@ -1,8 +1,9 @@
 
+
 <div class="row showplant">
 	<a href="/plants" class="green lighten-1 waves-effect waves-light btn-large">See All Vegetables</a>
 	<h1><%= plant.name %></h1>
-	<div class="info col s1 offset-s3"><%- plant.image %></div>
+	<div class="info col s1 offset-s3"><img src="<%- plant.image %>" width="200px"></div>
 	<div class="info col s4 offset-s1"><%= plant.info %></div>
 	
 </div>
@@ -20,4 +21,3 @@
 		<button type="submit"class="green lighten-1 waves-effect waves-light btn-large">See Your Garden</button>
 	</form>
 </div>
-
