@@ -22,15 +22,15 @@ router.get("/", function(req, res) {
 router.get("/newplant", function(req, res) {
 	db.plant.findOrCreate({
 		where: {
-			name: "Chard" },
+			name: "Broccoli" },
 		defaults: {	
 			category: "",
 			image:"",
 			info: "60 days to harvest. Sow in May, planting seeds an inch deep in rows 6 inches apart.",
 			S1: 5,
 			H1: 7,
-			S2: null,
-			H2: null
+			S2: 8,
+			H2: 10
 		}
 	}).spread(function(plant, created) {
 		if(!created) {
@@ -40,6 +40,14 @@ router.get("/newplant", function(req, res) {
 		}
 	});
 });
+
+router.get("/garden", function(req, res) {
+  db.user.findById(req.session.userId, {
+  	include:[db.plant]
+  	}).then(function(user) {
+       res.render("garden.ejs", {user:user});       
+  	});
+}); 
 
 router.post("/:id", function(req, res) {
 	var id = req.params.id;
@@ -51,16 +59,29 @@ router.post("/:id", function(req, res) {
 		});
 	});		
 });
-
+//from tags.js - use as example to bring in tags
+// router.get("/:id", function (req, res) {
+// 	var id = req.params.id;
+// 	db.plant.findById(id).then(function(plant){
+// 		plant.getTags().then(function(tag){
+// 			res.render('tags.ejs', {
+// 				plant:plant,
+// 				tag:tag
+// 			});
+// 		});
+// 	});
+// });
 
 router.get("/:id", function(req,res) {
 	var id = req.params.id;
-	db.plant.findAll().then(function(plants){
-		db.plant.findById(id).then(function(plant) {
+	 db.plant.findAll().then(function(plants){
+		db.plant.findById(id,{
+			include:[db.tag]
+			}).then(function(plant) {
 			res.render("showplant.ejs", {plant:plant, plantsList: plants});
 
 		});
-	});
+	 });
 });
 
 

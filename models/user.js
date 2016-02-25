@@ -13,6 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.user.belongsToMany(models.plant, {through: 'usersPlants'});
+        models.user.hasMany(models.image);
       },
       authenticate: function(email, password, callback) {
         this.find({

@@ -1,0 +1,15 @@
+
+<div class="container centerit">
+	<h3>Share images of your Garden here!</h3>
+
+	<form enctype="multipart/form-data" action="/gallery" method="POST">
+		<input type="file" name="userImage">
+		<input type="submit" class="green lighten-1 waves-effect waves-light btn-large">
+	</form>
+
+
+	<h1>Image Gallery</h1>
+	<% images.forEach(function(image) { %>
+		<%- cloudinary.image(image.image, {border: "10px_solid_#ffcdd2", effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb'}) %>
+	<% }); %>
+</div>

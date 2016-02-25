@@ -1,11 +1,11 @@
-<%= tag.name %>
+<h3 class="centerit">Plants with "<%= tag.name %>" Tag</h3>
 <div class="centerit">
 
 <% plant.forEach(function(plant){ %>
 	
 	<p>
 		<img class="circle" src="<%= plant.image %>" width="75px">
-		<%= plant.name %>
+		<a href="/plants/<%- plant.id%>"><%= plant.name %></a>
 	</p>	
 <% }) %>
 </div>

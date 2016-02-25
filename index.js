@@ -6,8 +6,13 @@ var bodyParser = require("body-parser");
 var app = express();
 var session = require('express-session');
 var flash = require('connect-flash');
+var cloudinary = require('cloudinary');
 var ejsLayouts = require("express-ejs-layouts");
 var plantsCtrl = require("./controllers/plants");
+
+// var upload = multer({ dest: './uploads/'});
+// var images = [];
+
 app.use(ejsLayouts);
 
 app.use(express.static(__dirname + '/static'));
@@ -90,12 +95,8 @@ app.get('/', function(req, res) {
 //   });
 // });
 
-// app.get("/garden", function(req, res) {
-//   db.user.findById(req.session.userId).then(function(user){
-//     db.plant.findAll().then(function(plant) {
-//        res.render("garden.ejs", {user:user, plant:plant});
-//     });   
-//   });
+
+ 
 //   var userId = req.session.userId;
 
 //   db.user.findById(req.session.userId).then(function(myplants) {
@@ -115,6 +116,7 @@ app.use("/tags", require("./controllers/tags"));
 app.use("/months", require("./controllers/months"));
 app.use("/plants", require("./controllers/plants"));
 app.use('/auth', require('./controllers/auth'));
+app.use('/gallery', require('./controllers/gallery'));
 
 app.get('/*', function(req, res) {
   res.render('error.ejs');

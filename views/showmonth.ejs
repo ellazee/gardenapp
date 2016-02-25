@@ -1,18 +1,27 @@
 <div class="row">
 	<div class="showplant">
 		<a href="/plants" class="green lighten-1 waves-effect waves-light btn-large">See All Vegetables</a>
-		<h1><%= months.name %></h1>
+		<h1><%= month.name %></h1>
 	</div>	
 </div>
-<%= months.name %>
-
-<div class="centerit">
-	<% foo.forEach(function(foo) { %>
-		<%= foo.name %>
-	<% }) %>
-
-
-	<% bar.forEach(function(bar) { %>
-		<%= bar.name %>
-	<% }) %>
-</div>	
+<%= month.name %>
+<div class="row">
+	<div class="centerit col s6">
+		<h5>To Sow this month:</h5>
+		<div>
+			<% seed1.forEach(function(plant) { %>
+				<%= plant.name %>
+				<img class="circle" width="50px" src="<%= plant.image %>">
+			<% }) %>
+		</div>	
+	</div>
+	<div class="centerit col s6">
+		<h5>To Harvest this month:</h5>
+		<div>
+			<% harvest1.forEach(function(plant) { %>
+				<%= plant.name %>
+				<img class="circle" width="50px" src="<%= plant.image %>">
+			<% }) %>
+		</div>			
+	</div>	
+</div>

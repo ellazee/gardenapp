@@ -6,10 +6,15 @@
 		<% plantsList.forEach(function(plant) {%>				
 			<div class="col s6" class="block js-equal-height">
 				<div class="divider"></div>
-					<a href="plants/<%- plant.id%> "><%= plant.name %></a>
+					<a href="plants/<%- plant.id%>"><%= plant.name %></a>
 						<div class="truncate" class="float-text"><%= plant.info %></div>
 						<div><img class="showplants responsive-img" src="<%- plant.image %>">
 						</div>
+						<form action="/plants/<%=plant.id%>" method="POST">
+							<button type="submit" class="round red lighten-1 btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></button>
+							<button type="submit" class="buttons green lighten-1 waves-effect waves-light btn-large">Add to My Garden</button>	
+							<input type="hidden" name="plantId" value="<%= plant.id %>"/>
+						</form>
 						<a class="tags" href="/tags/<%= plant.id %>">Tags</a>	
 						
 			</div>	

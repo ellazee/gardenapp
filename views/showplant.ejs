@@ -6,19 +6,21 @@
 	<div class="info col s1 offset-s3"><img src="<%- plant.image %>" width="200px"></div>
 	<div class="info col s4 offset-s1"><%= plant.info %></div>
 	<a class="tags" href="/tags/<%= plant.id %>">Tags</a>
-	
+	<% plant.tags.forEach(function(tag){ %>
+		<div class="chip"><a class="tags showtags" href="/tags/showtags/<%= tag.id %>"><%= tag.name %></a></div>
+	<%})%>
 </div>
 
 
 
 
-<div class="row showplant">	
+<div class="row centerit">	
 	<form action="/plants/<%=plant.id%>" method="POST">
 		<button type="submit" class="buttons green lighten-1 waves-effect waves-light btn-large">Add to My Garden</button>	
 		<input type="hidden" name="plantId" value="<%= plant.id %>"/>
 	</form>
 	
 	<form method="GET" action="/plants/garden">
-		<button type="submit"class="green lighten-1 waves-effect waves-light btn-large">See Your Garden</button>
+		<button type="submit" class="green lighten-1 waves-effect waves-light btn-large">See Your Garden</button>
 	</form>
 </div>

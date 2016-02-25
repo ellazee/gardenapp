@@ -2,17 +2,7 @@ var express = require('express');
 var db = require('../models');
 var router = express.Router();
 
-router.get("/:id", function (req, res) {
-	var id = req.params.id;
-	db.plant.findById(id).then(function(plant){
-		plant.getTags().then(function(tag){
-			res.render('tags.ejs', {
-				plant:plant,
-				tag:tag
-			});
-		});
-	});
-});
+
 
 router.post("/:id", function (req, res) {
 	var id = req.params.id;
@@ -31,6 +21,18 @@ router.post("/:id", function (req, res) {
 			});
 		});
 	});	
+});
+
+router.get("/:id", function (req, res) {
+	var id = req.params.id;
+	db.plant.findById(id).then(function(plant){
+		plant.getTags().then(function(tag){
+			res.render('tags.ejs', {
+				plant:plant,
+				tag:tag
+			});
+		});
+	});
 });
 
 router.get("/showtags/:id", function (req, res) {

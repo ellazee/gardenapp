@@ -28,8 +28,8 @@ router.get("/newmonth", function(req, res) {
 
 router.get("/:id", function(req,res) {
 	var id = req.params.id;
-	var foo;
-	var bar;
+	var seed1;
+	var harvest1;
 
 	db.plant.findAll({
 
@@ -38,21 +38,21 @@ router.get("/:id", function(req,res) {
 		}
 		// include: [db.month]
 	}).then(function(sow) {		
-		foo = sow;
-	});
-
-	db.plant.findAll({
+		seed1 = sow;
+		db.plant.findAll({
 		where: {
 			H1:id
 		}
 		// include: [db.month]
 	}).then(function(sow) {
-		bar = sow;
-		res.render("showmonth", {foo: foo, bar:bar});
-		// res.send(bar);
-	});
+		harvest1 = sow;
+		db.month.findById(id).then(function(month) {
+			res.render("showmonth", {seed1: seed1, harvest1:harvest1, month:month});
+		// res.send(harvest1);
+		});
 		// res.render("showmonth.ejs", {month:month});
-
+	});
+	});	
 });
 
 module.exports = router;
