@@ -2,9 +2,9 @@
 <style type="text/css">
 	.container {
 		border-radius: 20px;
-		background-color: #dcedc8;
-		border: solid #33691e 2px;
-		color: #33691e;
+		background-color: #ccff90;
+		border: solid #00c853 1px;
+		color: #00c853;
 	}	
 	input {
 		text-align: left;
@@ -14,10 +14,10 @@
 </style>
 <div class="container row centerit">
 	<div col s3 >
-	<h4 style="font-family: 'Antic'">Share images of your Garden here!</h4>
-		<form enctype="multipart/form-data" action="/gallery" method="POST" style="color:green">
+	<h5 style="font-family: 'Antic'">Share images of your Garden here!</h5>
+		<form enctype="multipart/form-data" action="/gallery" method="POST" style="color:#388e3c">
 			<input type="file" name="userImage">
-			<input type="submit" class="green lighten-1 waves-effect waves-light btn-large">
+			<input type="submit" class="button green lighten-1 waves-effect waves-light btn">
 		</form>
 	</div>	
 </div>	
@@ -30,9 +30,9 @@
 	<% images.forEach(function(image) { %>
 			<div class="col s3" class="block js-equal-height" style="font-size: 14px">
 				
-				<%- cloudinary.image(image.image, {effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb', }) %><br>
+				<%- cloudinary.image(image.image, {effect:"saturation:50", radius: 15, height: 250, gravity:'face', crop:'thumb', }) %><br>
 				<%- image.text%>
-				 <a href="/gallery/<%= image.id %>/edit" class="btn btn-info glyphicon glyphicon-edit"></a>
+				 <a href="/gallery/<%= image.id %>/edit" class="">Edit Caption</a>
 			</div>
 	<% }); %>		
 </div>			

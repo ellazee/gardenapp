@@ -1,7 +1,9 @@
-<h1>Edit</h1>
+<h3>Add or Edit a Caption for this photo</h3>
+
+<div class="container row">
 
 <form action="/gallery/<%= image.id %>" class="edit-form" role="form" method="POST">
-<div><%= image.image %></div>
+
   <div class="form-group">
     <label for="amount">Caption Image</label>
     <input type="text" class="form-control" id="caption" placeholder="caption here" name="caption" value="<%= image.text %>">
@@ -12,3 +14,4 @@
 </form>
 
 <a href="/gallery">&larr; Back</a>
+</div>
