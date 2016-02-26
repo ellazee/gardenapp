@@ -5,7 +5,7 @@
 	<h1><%= plant.name %></h1>
 	<div class="info col s1 offset-s3"><img src="<%- plant.image %>" width="200px"></div>
 	<div class="info col s4 offset-s1"><%= plant.info %></div>
-	<a class="tags" href="/tags/<%= plant.id %>">Tags</a>
+	
 	<% plant.tags.forEach(function(tag){ %>
 		<div class="chip"><a class="tags showtags" href="/tags/showtags/<%= tag.id %>"><%= tag.name %></a></div>
 	<%})%>

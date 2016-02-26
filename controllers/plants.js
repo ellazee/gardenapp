@@ -86,6 +86,15 @@ router.get("/:id", function(req,res) {
 	 });
 });
 
+router.delete("/:id", function(req, res) {
+	db.user.findById(req.session.userId).then(function(user) {
+		db.plant.findById(req.params.id).then(function(plant) {
+			user.removePlant(plant);
+				res.send("success");
+		});
+	});
+});
+
 
 
 module.exports = router;

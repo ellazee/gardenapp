@@ -1,0 +1,6 @@
+<h1>Calendar</h1>
+<ul>
+	<% month.forEach(function(month) { %>
+		<li><a href="/months/<%- month.id %>"><%= month.name %></a></li>
+	<% });%>
+</ul>	

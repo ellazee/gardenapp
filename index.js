@@ -71,6 +71,11 @@ app.get('/', function(req, res) {
   res.render('index', {alerts: req.flash()});
 });
 
+app.get('/calendar', function(req, res) {
+  db.month.findAll().then(function(month) {
+    res.render('calendar.ejs', {month: month});
+  });
+});
 
 app.get('/', function(req, res) {
 		res.render('index.ejs');

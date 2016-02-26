@@ -2,7 +2,7 @@ html {
     font-family: serif;
   }
 body {
-  	font-family: "Crushed";
+  	font-family: "Antic";
   }
 div {
 	font-family: "Antic";
@@ -11,10 +11,12 @@ div {
 h1 {
 	text-align: center;
 	color: #66bb6a;
+	font-family: "Crushed"; 
 }
 h3 {
 	color: #66bb6a;
 	text-align: center;
+	font-family: "Crushed";
 }
 h5 {
 	color: #66bb6a;
@@ -35,7 +37,7 @@ a {
 .welcome {
 	margin-left: 25px;
 	font-family: "Antic";
-	font-size: 26px;
+	font-size: 18px;
 	color: #33691e;
 }
 

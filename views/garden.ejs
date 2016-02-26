@@ -1,15 +1,17 @@
 <h1>My Garden</h1>
 
-<div class="row">
+<div class="row container">
 	<div>
 	<% user.plants.forEach(function(plant) {%>
-		<p>
-			<div class="row centerit">
-				<div><a href="plants/<%= plant.id %>"><h5><%= plant.name %></h5></a></div>  
-				<div class="info col s1 offset-s3"><img src="<%- plant.image %>"</div>
-				<div class="info col s4 offset-s1"><%= plant.info %></div>
+	<div class="col s6" class="block js-equal-height">
+				<div class="divider"></div>
+					<a href="<%- plant.id%>"><%= plant.name %></a>
+						<div class="truncate" class="float-text"><%= plant.info %></div>
+						<div><img style="border-radius: 50px" class="showplants responsive-img" src="<%- plant.image %>">
+						</div>
+						
+						<a href="/plants/<%= plant.id %>" class="deleteplant"><i class="material-icons">close</i>Remove From Garden</a>						
 			</div>
-		</p>
 		<% }); %>
 	</div>	
 </div>

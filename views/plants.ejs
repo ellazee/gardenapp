@@ -4,18 +4,18 @@
 	<h1 class="green-text text-darken-2">Vegetables</h1>
 	<div class="row" class="blocks">
 		<% plantsList.forEach(function(plant) {%>				
-			<div class="col s6" class="block js-equal-height">
+			<div class="col s4" class="block js-equal-height">
 				<div class="divider"></div>
 					<a href="plants/<%- plant.id%>"><%= plant.name %></a>
 						<div class="truncate" class="float-text"><%= plant.info %></div>
 						<div><img class="showplants responsive-img" src="<%- plant.image %>">
 						</div>
 						<form action="/plants/<%=plant.id%>" method="POST">
-							<button type="submit" class="round red lighten-1 btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></button>
+							
 							<button type="submit" class="buttons green lighten-1 waves-effect waves-light btn-large">Add to My Garden</button>	
 							<input type="hidden" name="plantId" value="<%= plant.id %>"/>
 						</form>
-						<a class="tags" href="/tags/<%= plant.id %>">Tags</a>	
+							
 						
 			</div>	
 		<% }) %>
@@ -30,7 +30,8 @@
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4"><%= plant.name %><i class="material-icons right">more_vert</i></span>
-      <p><a href="plants/<%- plant.id %>">Plant page</a></p>
+      <button type="submit" class="round red lighten-1 btn-floating btn-large waves-effect waves-light"><i class="material-icons">add</i></button>
+      <p><a href="plants/<%- plant.id %>">more info</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>

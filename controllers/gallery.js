@@ -22,6 +22,37 @@ router.get('/', function(req, res) {
 	}
 });
 
+router.get('/:id/edit', function (req, res) {
+	db.image.findById(req.params.id).then(function(image) {
+		if(image) {
+			res.render('editimage.ejs', {image:image});
+		} else {
+			res.render('error.ejs');
+		}
+	}).catch(function(err) {
+		res.render('error.ejs');
+	});
+});
+
+
+router.post('/:id', function (req, res) {
+	db.image.findById(req.params.id).then(function(image) {
+		if(image) {
+			image.updateAttributes({
+				text: req.body.caption
+			}).then(function() {
+				// res.send({msg: 'success'});
+				res.redirect("/gallery");
+			});
+		} else {
+			res.render('error');
+		}
+	}).catch(function(err) {
+		res.send({msg: 'error'});
+	});
+});
+
+
 
 router.post('/', upload.single('userImage'), function(req, res) {
 	 // res.send(req.file);

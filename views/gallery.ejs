@@ -1,15 +1,44 @@
 
-<div class="container centerit">
-	<h3>Share images of your Garden here!</h3>
+<style type="text/css">
+	.container {
+		border-radius: 20px;
+		background-color: #dcedc8;
+		border: solid #33691e 2px;
+		color: #33691e;
+	}	
+	input {
+		text-align: left;
 
-	<form enctype="multipart/form-data" action="/gallery" method="POST">
-		<input type="file" name="userImage">
-		<input type="submit" class="green lighten-1 waves-effect waves-light btn-large">
-	</form>
+	}
+
+</style>
+<div class="container row centerit">
+	<div col s3 >
+	<h4 style="font-family: 'Antic'">Share images of your Garden here!</h4>
+		<form enctype="multipart/form-data" action="/gallery" method="POST" style="color:green">
+			<input type="file" name="userImage">
+			<input type="submit" class="green lighten-1 waves-effect waves-light btn-large">
+		</form>
+	</div>	
+</div>	
 
 
-	<h1>Image Gallery</h1>
+
+
+
+<div class="row" class="blocks">	
 	<% images.forEach(function(image) { %>
-		<%- cloudinary.image(image.image, {effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb', }) %>
-	<% }); %>
-</div>
+			<div class="col s3" class="block js-equal-height" style="font-size: 14px">
+				
+				<%- cloudinary.image(image.image, {effect:"saturation:50", radius: 15, width: 200, gravity:'face', crop:'thumb', }) %><br>
+				<%- image.text%>
+				 <a href="/gallery/<%= image.id %>/edit" class="btn btn-info glyphicon glyphicon-edit"></a>
+			</div>
+	<% }); %>		
+</div>			
+	
+
+
+
+
+	
