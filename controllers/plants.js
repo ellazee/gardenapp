@@ -22,15 +22,15 @@ router.get("/", function(req, res) {
 router.get("/newplant", function(req, res) {
 	db.plant.findOrCreate({
 		where: {
-			name: "Broccoli" },
+			name: "Spinach" },
 		defaults: {	
-			category: "",
+			category: "Greens",
 			image:"",
-			info: "60 days to harvest. Sow in May, planting seeds an inch deep in rows 6 inches apart.",
-			S1: 5,
-			H1: 7,
-			S2: 8,
-			H2: 10
+			info: "45 days. Sow in the fall for winter harvests or in the early spring for early summer harvests.",
+			S1: 2,
+			H1: 8,
+			S2: 3,
+			H2: 11
 		}
 	}).spread(function(plant, created) {
 		if(!created) {
