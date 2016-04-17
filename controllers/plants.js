@@ -4,13 +4,8 @@ var db = require('../models');
 var bodyParser = require("body-parser");
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
-//var ejsLayouts = require("express-ejs-layouts");
+
 router.use(express.static(__dirname + '/static'));
-
-
-// router.get("/", function (req,res) {
-// 	res.send("It's working!");
-// });
 
 router.get("/", function(req, res) {
 	db.plant.findAll().then(function(plants) {
@@ -56,23 +51,11 @@ router.post("/:id", function(req, res) {
 	db.user.findById(req.session.userId).then(function(post) {
 		db.plant.findById(id).then(function(myplant) {
 			post.addPlant(myplant).then(function() {
-				res.redirect("/plants/:id");
+				res.redirect("/plants/garden");
 			});
 		});
 	});		
 });
-//from tags.js - use as example to bring in tags
-// router.get("/:id", function (req, res) {
-// 	var id = req.params.id;
-// 	db.plant.findById(id).then(function(plant){
-// 		plant.getTags().then(function(tag){
-// 			res.render('tags.ejs', {
-// 				plant:plant,
-// 				tag:tag
-// 			});
-// 		});
-// 	});
-// });
 
 router.get("/:id", function(req,res) {
 	var id = req.params.id;
