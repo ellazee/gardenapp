@@ -30,6 +30,9 @@ a {
 	font-size: 22px;
 	text-align: left;
 }
+.spacer {
+	margin-left: 1em;
+}
 
 .showplant img {
 	width= 200px;
