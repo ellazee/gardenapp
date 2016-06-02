@@ -3,7 +3,11 @@
 		<a href="/plants" class="green lighten-1 waves-effect waves-light btn-large">See All Vegetables</a>
 		<a href="/plants/garden" class="green lighten-1 waves-effect waves-light btn-large">See My Garden</a>
 
-		<h3><%= month.name %></h3>
+		<h3>
+			<a href="/months/<%= month.id -1 %>"><i class="material-icons">chevron_left</i></a>
+			<%= month.name %>
+			<a href="/months/<%= month.id +1 %>"><i class="material-icons">chevron_right</i></a>
+		</h3>
 	</div>	
 </div>
 
