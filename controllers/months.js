@@ -44,15 +44,27 @@ router.get("/:id", function(req,res) {
 			H1:id
 		}
 		// include: [db.month]
-	}).then(function(sow) {
-		harvest1 = sow;
-		db.month.findById(id).then(function(month) {
-			res.render("showmonth", {seed1: seed1, harvest1:harvest1, month:month});
+		}).then(function(sow) {
+			harvest1 = sow;
+			db.month.findById(id).then(function(month) {
+				res.render("showmonth", {seed1: seed1, harvest1:harvest1, month:month});
 		// res.send(harvest1);
-		});
+			});
 		// res.render("showmonth.ejs", {month:month});
-	});
+		});
 	});	
+	
+	//trying to link to plants from month
+	// var id = req.params.id;
+	// db.plant.findById(id).then(function(plant){
+	// 	plant.getMonths().then(function(month){
+	// 		res.render('showmonth.ejs', {
+	// 			plant:plant,
+	// 			month:month
+	// 		});
+	// 	});
+	// });
+
 });
 
 module.exports = router;

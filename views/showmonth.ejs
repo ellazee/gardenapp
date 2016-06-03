@@ -18,8 +18,10 @@
 		<div>
 			<ul>
 				<% seed1.forEach(function(plant) { %>
-					<li><%= plant.name %></li>
-					<li><img class="circle" width="50px" src="<%= plant.image %>"></li>
+					<a href="/plants/<%- plant.id%>">
+						<li><%= plant.name %></li>
+						<li><img class="circle" width="50px" src="<%= plant.image %>"></li>
+					</a>
 				<% }) %>
 			</ul>	
 		</div>	
@@ -29,8 +31,10 @@
 		<div>
 			<ul>
 				<% harvest1.forEach(function(plant) { %>
-					<li><%= plant.name %></li>
-					<li><img class="circle" width="50px" src="<%= plant.image %>"></li>
+					<a href="/plants/<%- plant.id%>">
+						<li><%= plant.name %></li>
+						<li><img class="circle" width="50px" src="<%= plant.image %>"></li>
+					</a>
 				<% }) %>
 			</ul>	
 		</div>			
